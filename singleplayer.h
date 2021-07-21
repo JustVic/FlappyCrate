@@ -21,6 +21,8 @@ class Singleplayer : public GameState
         sf::Font font;
         int direction;
         bool gameOverFlag;
+        
+        Texture obstacleTexture;
 
 
 	public:

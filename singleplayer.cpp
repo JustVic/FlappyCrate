@@ -43,12 +43,12 @@ Singleplayer::Singleplayer(GameEngine* game)
 	
 	int obstacles_num = 8;
 	
-	for(int i = 0; i < obstacles_num; i++)
-	{
-		Texture obstacleTexture;
+	//for(int i = 0; i < obstacles_num; i++)
+	//{
+		//Texture obstacleTexture;
     	obstacleTexture.loadFromFile("data/images/quadb.bmp");
-    	obstacleTextures.push_back(obstacleTexture);
-	}
+    	//obstacleTextures.push_back(obstacleTexture);
+	//}
 	
 	for(int i = 0; i < obstacles_num;)
 	{
@@ -65,7 +65,7 @@ Singleplayer::Singleplayer(GameEngine* game)
 			
 		Sprite obstacleSprite;
 
-			obstacleSprite.setTexture(obstacleTextures[i]);
+			obstacleSprite.setTexture(obstacleTexture);
 			obstacleSprite.setTextureRect(sf::IntRect(0,0,30,30));//получили нужный нам прямоугольник с котом
 			obstacleSprite.setScale(3, 8.53);
 			obstacleSprite.setPosition((640+(i*90)), y1_pos);
@@ -74,7 +74,7 @@ Singleplayer::Singleplayer(GameEngine* game)
 			obstacleSprites.push_back(obstacleSprite);
 		i++;
 
-			obstacleSprite.setTexture(obstacleTextures[i]);
+			obstacleSprite.setTexture(obstacleTexture);
 			obstacleSprite.setTextureRect(sf::IntRect(0,0,30,30));//получили нужный нам прямоугольник с котом
 			obstacleSprite.setScale(3, 8.53);
 			obstacleSprite.setPosition((640+((i-1)*90)), y2_pos);
@@ -123,8 +123,10 @@ bool Singleplayer::Collision()
 
 void Singleplayer::RemoveOldAndAddNewObstacle()
 {
+	
 	for(int i = 0; i < obstacleSprites.size(); i++)
 	{
+		Sprite obstacleSprite;
 		sf::Vector2f position = obstacleSprites[i].getPosition();
 		if(position.x<-90)
 		{
@@ -141,17 +143,17 @@ void Singleplayer::RemoveOldAndAddNewObstacle()
 			Sprite obstacleSprite;			
 			if(i%2)
 			{	
-				obstacleSprite.setTexture(obstacleTextures[i]);
+				obstacleSprite.setTexture(obstacleTexture);
 				obstacleSprite.setTextureRect(sf::IntRect(0,0,30,30));
-				obstacleSprite.setPosition(640, y1_pos);
 				obstacleSprite.setScale(3, 8.53);
+				obstacleSprite.setPosition(640, y1_pos);
 			}
 			else
 			{
-				obstacleSprite.setTexture(obstacleTextures[i]);
+				obstacleSprite.setTexture(obstacleTexture);
 				obstacleSprite.setTextureRect(sf::IntRect(0,0,30,30));
-				obstacleSprite.setPosition(640, y2_pos);
 				obstacleSprite.setScale(3, 8.53);
+				obstacleSprite.setPosition(640, y2_pos);
 			}
 			
 			obstacleSprites.push_back(obstacleSprite);
@@ -164,7 +166,6 @@ void Singleplayer::RemoveOldAndAddNewObstacle()
 		sf::Vector2f position = it->getPosition();
 		if(position.x<-90)
 		{
-			gameOverFlag = true;
 			//int i = std::distance(obstacleSprites.begin(), it);
 			//obstacleTextures.erase(obstacleTextures.begin()+i);
 			it = obstacleSprites.erase(it);
@@ -189,11 +190,10 @@ void Singleplayer::Update(RenderWindow& window)
 			obstacleSprites.at(i).move(-1.f, 0.0);
 		}	
 		
+		RemoveOldAndAddNewObstacle();
 	}
 		
 	herosprite.move(0.f, +2.f);
-	
-	RemoveOldAndAddNewObstacle();
 	
 	if(Collision())
 		gameOverFlag = true;
