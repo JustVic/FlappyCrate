@@ -5,7 +5,6 @@
 #include <functional>
 #include <memory>
 #include <iostream>
-//#include "renderer.h"
 
 #include <SFML/Graphics.hpp>
 
@@ -16,11 +15,13 @@ class GameState;
 class GameEngine : public std::enable_shared_from_this<GameEngine>
 {
 	private:
-        bool running;
+		bool running;
+		
 		RenderWindow window;
 
-        std::shared_ptr<GameState> currentState;
-        std::vector<std::shared_ptr<GameState>> states;
+        	std::shared_ptr<GameState> currentState;
+		
+        	std::vector<std::shared_ptr<GameState>> states;
 
     public:
 
@@ -30,14 +31,12 @@ class GameEngine : public std::enable_shared_from_this<GameEngine>
 
 		int ReadSave();
 
-		void Save(int Highlevel);
+		void Save(const int Highlevel);
 
 		void ToSinglePlayer();
 
 		void ToHighscore();
 		
-		RenderWindow GetWindow();
-
 		void ChangeState(std::shared_ptr<GameState> state);
 		
 		void ToSingleplayer();

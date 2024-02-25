@@ -1,12 +1,11 @@
 #include <SFML/Graphics.hpp>
 #include "gameengine.h"
 
-using namespace sf;
 int main()
 {
 	GameEngine game;
 
-	bool quit = false;
+	//bool quit = false;
  
  	if( !game.Init() ){
 		printf( "Failed to initialize!\n" );
@@ -22,5 +21,5 @@ int main()
  	}
  	
  	game.Cleanup();
-	return true;
+	return 0;
 }

@@ -3,15 +3,17 @@
 
 #include "gamestate.h"
 #include <SFML/Graphics.hpp>
-using namespace sf;
 
 class Menu : public GameState
 {
 	private:
 		Texture herotexture;
-        Sprite herosprite;
-        sf::Text text;
-        sf::Font font;
+		
+		Sprite herosprite;
+		
+		sf::Text text;
+		
+		sf::Font font;
 
 
 	public:

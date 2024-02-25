@@ -3,19 +3,21 @@
 
 #include "gamestate.h"
 #include <SFML/Graphics.hpp>
-using namespace sf;
 
 class Intro : public GameState
 {
 	private:
-		Texture herotexture;
-        Sprite herosprite;
-        sf::Text text;
-        sf::Font font;
+		Texture heroTexture;
+		
+		Sprite heroSprite;
+		
+		sf::Text text;
+		
+		sf::Font font;
 
 
 	public:
-		Intro(GameEngine* game);
+		Intro(const GameEngine* game);
 
 		void Update(RenderWindow& window);
 

@@ -7,23 +7,26 @@
 #include <deque>
 #include <SFML/Graphics.hpp>
 
-using namespace sf;
-
 class Singleplayer : public GameState
 {
 	private:
-		Texture herotexture;
-        Sprite herosprite;
+		Texture heroTexture;
+        	
+		Sprite heroSprite;
 
-        std::vector<Sprite> obstacleSprites;
-        std::vector<Texture> obstacleTextures;
-        sf::Text gameOverText;
-        sf::Font font;
-        int direction;
-        bool gameOverFlag;
+        	std::vector<Sprite> obstacleSprites;
+        	
+		std::vector<Texture> obstacleTextures;
+        	
+		sf::Text gameOverText;
+        	
+		sf::Font font;
+        	
+		int direction;
+        	
+		bool gameOverFlag;
         
-        Texture obstacleTexture;
-
+        	Texture obstacleTexture;
 
 	public:
 		Singleplayer(GameEngine* game);
